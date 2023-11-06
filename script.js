@@ -1,5 +1,4 @@
 // Assignment code here
-const Criteria_Number = 4;
 const Password_Min_Length = 8;
 const Password_Max_Length = 128;
 
@@ -151,7 +150,20 @@ function askCriteria() {
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
-function generatePassword() {}
+//* Generates pwd using length and selected criteria.
+function generatePassword() {
+   //* Loops for total pwd length.
+   for (var i = 0; i < pwdLength; i++) {
+      var charTypeBucketIndex = Math.floor(Math.random() * pwdData.length); //* Calculate charType (upper, lower, number, special) index.
+      //* Loops until random charType bucket index is in list of selected criteria.
+      while (pwdData[charTypeBucketIndex].selectedCriteria === false) {
+         charTypeBucketIndex = Math.floor(Math.random() * pwdData.length);
+         console.log("Bucket number", charTypeBucketIndex);
+      }
+      console.log("*****Selected bucket", charTypeBucketIndex);
+      var BucketCharIndex = Math.floor(Math.random() * pwdData);
+   }
+}
 
 // Write password to the #password input
 function writePassword() {

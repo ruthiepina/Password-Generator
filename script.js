@@ -2,6 +2,8 @@
 const Password_Min_Length = 8;
 const Password_Max_Length = 128;
 
+var password = "";
+
 var pwdData = [
    {
       name: "uppercase characters",
@@ -161,8 +163,18 @@ function generatePassword() {
          console.log("Bucket number", charTypeBucketIndex);
       }
       console.log("*****Selected bucket", charTypeBucketIndex);
-      var BucketCharIndex = Math.floor(Math.random() * pwdData);
+      var SelectedBucketCharIndex = Math.floor(Math.random() * pwdData[charTypeBucketIndex].characterSet.length);
+      console.log("Selected bucket: " + charTypeBucketIndex);
+      console.log("Bucket content: " + pwdData[charTypeBucketIndex].characterSet);
+      console.log("Bucket size: " + pwdData[charTypeBucketIndex].characterSet.length);
+      console.log("Selected Bucket Char Index: " + SelectedBucketCharIndex);
+      console.log("Selected Character: " + pwdData[charTypeBucketIndex].characterSet[SelectedBucketCharIndex]);
+
+      password += pwdData[charTypeBucketIndex].characterSet[SelectedBucketCharIndex];
+      console.log("Password inside: ", password);
    }
+   console.log("Password outside: ", password);
+   return password;
 }
 
 // Write password to the #password input
